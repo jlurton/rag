@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "rag"
+version = "0.1.0"
+description = "TP : construire un RAG sur des datasheets de composants"
+authors = ["Cross Data"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.14"
+# Notebooks
+jupyter = "^1.1"
+# Appel des LLMs via API (une seule syntaxe pour tous les fournisseurs)
+litellm = "^1.70"
+python-dotenv = "^1.1"
+# Modèles d'embeddings ouverts (Hugging Face) exécutés en local, sans torch
+fastembed = "^0.7"
+# Recherche par mots-clés (BM25)
+rank-bm25 = "^0.2"
+# Lecture des PDF
+pymupdf = "^1.25"
+# Calcul et affichage
+numpy = "^2.0"
+matplotlib = "^3.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

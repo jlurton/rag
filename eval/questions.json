@@ -1,0 +1,203 @@
+[
+ {
+  "question": "Quelle est la tension d'alimentation du HC-SR04 ?",
+  "source": "hcsr04.pdf",
+  "pages": [
+   1
+  ]
+ },
+ {
+  "question": "Quelle est la portée de mesure du capteur ultrason HC-SR04 ?",
+  "source": "hcsr04.pdf",
+  "pages": [
+   1
+  ]
+ },
+ {
+  "question": "Quelle durée minimale doit avoir l'impulsion de déclenchement (trigger) du HC-SR04 ?",
+  "source": "hcsr04.pdf",
+  "pages": [
+   1,
+   2
+  ]
+ },
+ {
+  "question": "Quel est le courant de fonctionnement du HC-SR04 ?",
+  "source": "hcsr04.pdf",
+  "pages": [
+   1
+  ]
+ },
+ {
+  "question": "Combien de broches GPIO le Raspberry Pi Pico expose-t-il ?",
+  "source": "pico.pdf",
+  "pages": [
+   4
+  ]
+ },
+ {
+  "question": "Quelle quantité de SRAM contient le RP2040 du Raspberry Pi Pico ?",
+  "source": "pico.pdf",
+  "pages": [
+   4
+  ]
+ },
+ {
+  "question": "Quelle est la fréquence maximale du processeur du Raspberry Pi Pico ?",
+  "source": "pico.pdf",
+  "pages": [
+   4
+  ]
+ },
+ {
+  "question": "À quelle broche GPIO est reliée la LED utilisateur du Raspberry Pi Pico ?",
+  "source": "pico.pdf",
+  "pages": [
+   8
+  ]
+ },
+ {
+  "question": "Quelle est la fréquence maximale du processeur de l'ESP32 ?",
+  "source": "esp32.pdf",
+  "pages": [
+   3,
+   4,
+   26
+  ]
+ },
+ {
+  "question": "Quelle quantité de SRAM embarque l'ESP32 ?",
+  "source": "esp32.pdf",
+  "pages": [
+   4,
+   26
+  ]
+ },
+ {
+  "question": "Combien de GPIO programmables possède l'ESP32 ?",
+  "source": "esp32.pdf",
+  "pages": [
+   4,
+   36
+  ]
+ },
+ {
+  "question": "Quelles normes Wi-Fi l'ESP32 supporte-t-il ?",
+  "source": "esp32.pdf",
+  "pages": [
+   3,
+   33
+  ]
+ },
+ {
+  "question": "Quelle est la consommation de courant du BME280 en mode veille (sleep) ?",
+  "source": "bme280.pdf",
+  "pages": [
+   2,
+   3
+  ]
+ },
+ {
+  "question": "Quelle est la plage de pression mesurable par le BME280 ?",
+  "source": "bme280.pdf",
+  "pages": [
+   2
+  ]
+ },
+ {
+  "question": "Quelle est la plage de température de fonctionnement du BME280 ?",
+  "source": "bme280.pdf",
+  "pages": [
+   2
+  ]
+ },
+ {
+  "question": "Quelle est l'adresse I2C du BME280 quand la broche SDO est reliée à la masse ?",
+  "source": "bme280.pdf",
+  "pages": [
+   32
+  ]
+ },
+ {
+  "question": "À quelle adresse se trouve le registre ctrl_meas du BME280 ?",
+  "source": "bme280.pdf",
+  "pages": [
+   27,
+   28,
+   29
+  ]
+ },
+ {
+  "question": "Quelle est la consommation du BME280 à 1 Hz en mesurant humidité, pression et température ?",
+  "source": "bme280.pdf",
+  "pages": [
+   2
+  ]
+ },
+ {
+  "question": "Quelle est la précision du LM35 à 25 °C ?",
+  "source": "lm35.pdf",
+  "pages": [
+   1,
+   15
+  ]
+ },
+ {
+  "question": "Quel est le facteur d'échelle en sortie du LM35 (en mV par °C) ?",
+  "source": "lm35.pdf",
+  "pages": [
+   1,
+   15
+  ]
+ },
+ {
+  "question": "Quelle plage de tension d'alimentation accepte le LM35 ?",
+  "source": "lm35.pdf",
+  "pages": [
+   1
+  ]
+ },
+ {
+  "question": "Quelle est la plage de température que peut mesurer le LM35 ?",
+  "source": "lm35.pdf",
+  "pages": [
+   1,
+   13
+  ]
+ },
+ {
+  "question": "Quel microcontrôleur équipe l'Arduino Uno R3 ?",
+  "source": "arduino_uno.pdf",
+  "pages": [
+   1,
+   2,
+   5,
+   16,
+   17
+  ]
+ },
+ {
+  "question": "Combien d'entrées/sorties numériques et d'entrées analogiques possède l'Arduino Uno ?",
+  "source": "arduino_uno.pdf",
+  "pages": [
+   5,
+   17
+  ]
+ },
+ {
+  "question": "Quelle est la taille de la mémoire flash de l'Arduino Uno ?",
+  "source": "arduino_uno.pdf",
+  "pages": [
+   2,
+   16
+  ]
+ },
+ {
+  "question": "À quelle fréquence fonctionne le processeur de l'Arduino Uno ?",
+  "source": "arduino_uno.pdf",
+  "pages": [
+   2,
+   16
+  ]
+ }
+]
