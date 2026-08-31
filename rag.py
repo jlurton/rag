@@ -127,11 +127,20 @@ def build_index(data_dir: str = settings.DATA_DIR, index_dir: str = settings.IND
     print(f"   matrice {embeddings.shape} (chunks x dimensions)")
 
     print("4. sauvegarde de l'index...")
+    save_index(chunks, embeddings, index_dir)
+    print(f"   index écrit dans {index_dir}/")
+
+
+def save_index(chunks: list[dict], embeddings: np.ndarray, index_dir: str) -> None:
+    """Sauvegarde un index (chunks + embeddings) dans un dossier.
+
+    Permet de conserver plusieurs index côte à côte (par exemple un par stratégie
+    de découpage) et de les recharger avec load_index(index_dir) pour les comparer.
+    """
     Path(index_dir).mkdir(exist_ok=True)
     with open(Path(index_dir) / "chunks.json", "w", encoding="utf-8") as f:
         json.dump(chunks, f, ensure_ascii=False, indent=1)
     np.save(Path(index_dir) / "embeddings.npy", embeddings)
-    print(f"   index écrit dans {index_dir}/")
 
 
 def load_index(index_dir: str = settings.INDEX_DIR) -> tuple[list[dict], np.ndarray]:

@@ -1,9 +1,13 @@
 # Clé(s) d'API : ne JAMAIS commiter
 .env
 
+# Corrigés : à ne pas publier avant la séance
+tp*_corrige.ipynb
+
 # Données téléchargées et index calculés (regénérables)
 data/*.pdf
 index/
+index_paragraphes/
 
 # Python / Jupyter
 __pycache__/
