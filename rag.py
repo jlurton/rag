@@ -22,6 +22,7 @@ Les notebooks tp1/tp2/tp3 reprennent ces étapes une par une, avec des explicati
 """
 
 import json
+import os
 import re
 import sys
 import warnings
@@ -31,12 +32,18 @@ import numpy as np
 import pymupdf  # lecture des PDF
 from dotenv import load_dotenv
 from fastembed import TextEmbedding  # modèles d'embeddings ouverts, exécutés en local
+import litellm
 from litellm import completion  # appel des LLMs via API
 from rank_bm25 import BM25Okapi  # recherche par mots-clés
 
 import settings
 
-load_dotenv()  # charge HF_TOKEN depuis le fichier .env
+load_dotenv()  # charge la clé d'API (LLM_API_KEY) depuis le fichier .env
+
+# Le proxy parle le format OpenAI : on indique une fois pour toutes à LiteLLM où appeler
+# et avec quelle clé. Tous les appels completion() du projet (notebooks compris) en héritent.
+litellm.api_base = settings.LLM_API_BASE
+litellm.api_key = os.getenv("LLM_API_KEY")
 warnings.filterwarnings("ignore", message=".*mean pooling.*")  # avertissement interne de fastembed, sans conséquence
 
 

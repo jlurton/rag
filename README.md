@@ -15,6 +15,6 @@ No framework, no vector database: PDFs → chunks → embeddings → numpy index
 git clone https://github.com/jlurton/rag.git && cd rag
 poetry install                       
 poetry run python download_data.py    # downloads the datasheets into data/
-cp .env.example .env                  # then set HF_TOKEN in .env
+cp .env.example .env                  # then set LLM_API_KEY in .env
 poetry run python check_setup.py      # checks Python, token, corpus, embedding model, LLM call
 ```

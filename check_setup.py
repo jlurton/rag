@@ -29,10 +29,10 @@ else:
 
 print("2. Clé d'API")
 load_dotenv()
-if os.getenv("HF_TOKEN"):
-    print(OK + "HF_TOKEN trouvée dans .env")
+if os.getenv("LLM_API_KEY"):
+    print(OK + "LLM_API_KEY trouvée dans .env")
 else:
-    sys.exit(KO + "HF_TOKEN absente : copier .env.example en .env et renseigner la clé fournie")
+    sys.exit(KO + "LLM_API_KEY absente : copier .env.example en .env et renseigner la clé fournie")
 
 print("3. Corpus")
 pdfs = list(Path(settings.DATA_DIR).glob("*.pdf"))

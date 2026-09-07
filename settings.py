@@ -25,13 +25,15 @@ EMBEDDING_MODELS_TO_COMPARE = [
 ]
 
 # --- Modèle de génération (TP2) -------------------------------------------
-# Appelé via l'API Hugging Face Inference Providers, avec LiteLLM.
-# Syntaxe LiteLLM : "huggingface/<organisation>/<modèle>".
-# La clé d'API est lue dans la variable d'environnement HF_TOKEN (fichier .env).
-# Petit modèle (~4 milliards de paramètres), multilingue, ~0,01 $/M tokens.
-GENERATION_MODEL = "huggingface/Qwen/Qwen3-4B-Instruct-2507"
-# Un modèle 18 fois plus gros (~0,40 $/M tokens), pour comparer coût / qualité (TP2) et juger (TP3) :
-GENERATION_MODEL_LARGE = "huggingface/Qwen/Qwen2.5-72B-Instruct"
+# Appelé via le proxy LLM de Cross Data (API compatible OpenAI), avec LiteLLM :
+# le préfixe "openai/" indique à LiteLLM de parler le format OpenAI à l'adresse LLM_API_BASE.
+# La clé d'API est lue dans la variable d'environnement LLM_API_KEY (fichier .env).
+LLM_API_BASE = "https://proxy.openllm.lab.crossdata.tech"
+GENERATION_MODEL = "openai/mistral/mistral-small-latest"
+# Modèle utilisé pour les comparaisons (TP2 §4.b) et comme juge (TP3).
+# Le proxy n'expose qu'un seul modèle de génération pour l'instant : c'est donc le même.
+# À remplacer par un modèle plus gros dès qu'il y en a un.
+GENERATION_MODEL_LARGE = "openai/mistral/mistral-small-latest"
 
 # --- Recherche -------------------------------------------------------------
 TOP_K = 5  # nombre de chunks transmis au LLM
