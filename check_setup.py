@@ -1,7 +1,7 @@
 """
 Vérifie que l'environnement est prêt pour le TP.
 
-Usage : poetry run python check_setup.py
+Usage : python check_setup.py (ou clic droit → Run dans IntelliJ)
 
 Vérifie dans l'ordre :
   1. la version de Python

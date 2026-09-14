@@ -1,0 +1,19 @@
+# Dépendances du TP. Installation : pip install -r requirements.txt
+# Versions figées pour que tout le monde ait le même environnement pendant la séance.
+
+# Notebooks (nécessaire aussi pour exécuter les notebooks depuis IntelliJ)
+jupyter==1.1.1
+# Appel des LLMs via API (une seule syntaxe pour tous les fournisseurs)
+litellm==1.98.0
+python-dotenv==1.2.3
+# Modèles d'embeddings ouverts (Hugging Face) exécutés en local, sans torch
+fastembed==0.7.4
+# Tokenizers Hugging Face (utilisés dans le TP1 pour visualiser les tokens)
+tokenizers==0.23.1
+# Recherche par mots-clés (BM25)
+rank-bm25==0.2.2
+# Lecture des PDF
+pymupdf==1.28.2
+# Calcul et affichage
+numpy==2.4.6
+matplotlib==3.11.1

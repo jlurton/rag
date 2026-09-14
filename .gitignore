@@ -17,3 +17,6 @@ __pycache__/
 
 # Ressources internes de formation (non publiées)
 Ressources/
+
+# Fichiers de configuration IntelliJ (propres à chaque poste)
+.idea/
