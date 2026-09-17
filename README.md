@@ -15,28 +15,45 @@ Pas de framework, pas de base vectorielle : PDF → chunks → embeddings → in
 1. **Récupérer le projet** : *File → New → Project from Version Control*,
    URL `https://github.com/jlurton/rag.git`, puis *Clone*.
 
-2. **Créer l'environnement virtuel** : *File → Project Structure → Project → SDK → Add Python SDK…*
-   - onglet **Virtualenv Environment**, option **New environment**
-   - *Location* : `<dossier du projet>/.venv`
-   - *Base interpreter* : votre Python ≥ 3.11
-   - *OK* — IntelliJ crée `.venv/` et l'associe au projet.
+2. **Créer l'environnement virtuel** : *File → Project Structure → Platform Settings → SDKs*,
+   bouton **+** → *Add Python SDK from disk…*
 
-3. **Installer les dépendances** : ouvrir `requirements.txt`.
+   ![Ajouter un SDK Python](docs/img/intellij-1-add-python-sdk.png)
+
+   Dans la fenêtre *Add Python Interpreter* :
+   - *Environment* : **Generate new**
+   - *Type* : **Virtualenv**
+   - *Base Python* : votre Python ≥ 3.11
+   - *Location* : `<dossier du projet>/.venv`
+   - *OK* — IntelliJ crée le dossier `.venv/`.
+
+   ![Créer le virtualenv](docs/img/intellij-2-nouveau-venv.png)
+
+3. **Activer le venv pour le projet** : toujours dans *Project Structure*, aller dans
+   *Project Settings → Project* et choisir le SDK qui vient d'être créé
+   (`<dossier du projet>/.venv`) dans la liste *SDK*, puis *OK*.
+   Sans cette étape, le projet reste sur le JDK par défaut et Python n'est pas reconnu.
+
+   ![Sélectionner le SDK du projet](docs/img/intellij-3-sdk-du-projet.png)
+
+4. **Installer les dépendances** : ouvrir `requirements.txt`.
    IntelliJ propose une bannière *Install requirements* en haut du fichier : cliquer dessus.
    (Sinon, dans le terminal intégré — *View → Tool Windows → Terminal*, qui active `.venv`
    automatiquement — lancer `pip install -r requirements.txt`.)
 
-4. **Télécharger les datasheets** : clic droit sur `download_data.py` → *Run 'download_data'*.
+5. **Télécharger les datasheets** : clic droit sur `download_data.py` → *Run 'download_data'*.
    Les PDF arrivent dans `data/`.
 
-5. **Renseigner la clé d'API** : copier `.env.example` en `.env`
+6. **Renseigner la clé d'API** : copier `.env.example` en `.env`
    (clic droit sur le fichier → *Copy*, puis *Paste*), et y mettre la clé fournie dans `LLM_API_KEY`.
 
-6. **Vérifier que tout est prêt** : clic droit sur `check_setup.py` → *Run 'check_setup'*.
-   Le script contrôle la version de Python, la clé, le corpus, le modèle d'embeddings
-   (~500 Mo téléchargés au premier lancement) et un appel au LLM.
+7. **Vérifier que tout est prêt** : clic droit sur `check_setup.py` → *Run 'check_setup'*.
+   Le script contrôle, dans l'ordre, la version de Python, la clé, le corpus, le modèle
+   d'embeddings (~500 Mo téléchargés au premier lancement) et un appel au LLM ;
+   il s'arrête à la première vérification qui échoue (sans clé dans `.env`, il s'arrête donc
+   dès l'étape 2).
 
-7. **Ouvrir le premier notebook** : `tp1_retrieval.ipynb`.
+8. **Ouvrir le premier notebook** : `tp1_retrieval.ipynb`.
    IntelliJ démarre le serveur Jupyter tout seul ; vérifier en haut à droite du notebook
    que l'interpréteur sélectionné est bien celui du projet (`.venv`).
 
