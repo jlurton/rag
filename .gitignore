@@ -3,6 +3,8 @@
 
 # Corrigés : à ne pas publier avant la séance
 tp*_corrige.ipynb
+solutions/*
+!solutions/.gitkeep
 
 # Données téléchargées et index calculés (regénérables)
 data/*.pdf

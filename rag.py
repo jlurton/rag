@@ -28,11 +28,11 @@ import sys
 import warnings
 from pathlib import Path
 
+import litellm
 import numpy as np
 import pymupdf  # lecture des PDF
 from dotenv import load_dotenv
 from fastembed import TextEmbedding  # modèles d'embeddings ouverts, exécutés en local
-import litellm
 from litellm import completion  # appel des LLMs via API
 from rank_bm25 import BM25Okapi  # recherche par mots-clés
 
@@ -40,11 +40,13 @@ import settings
 
 load_dotenv()  # charge la clé d'API (LLM_API_KEY) depuis le fichier .env
 
-# Le proxy parle le format OpenAI : on indique une fois pour toutes à LiteLLM où appeler
+# L'API de Cross Data parle le format OpenAI : on indique une fois pour toutes à LiteLLM où appeler
 # et avec quelle clé. Tous les appels completion() du projet (notebooks compris) en héritent.
 litellm.api_base = settings.LLM_API_BASE
 litellm.api_key = os.getenv("LLM_API_KEY")
-warnings.filterwarnings("ignore", message=".*mean pooling.*")  # avertissement interne de fastembed, sans conséquence
+warnings.filterwarnings(
+    "ignore", message=".*mean pooling.*"
+)  # avertissement interne de fastembed, sans conséquence
 
 
 # =============================================================================
@@ -114,7 +116,9 @@ def embed(texts: list[str], model_name: str = settings.EMBEDDING_MODEL) -> np.nd
 
 
 # --- 4. Construire / charger l'index ------------------------------------------
-def build_index(data_dir: str = settings.DATA_DIR, index_dir: str = settings.INDEX_DIR) -> None:
+def build_index(
+    data_dir: str = settings.DATA_DIR, index_dir: str = settings.INDEX_DIR
+) -> None:
     """Enchaîne les étapes 1 à 3 et sauvegarde le résultat sur disque.
 
     L'index tient en deux fichiers :
@@ -129,7 +133,9 @@ def build_index(data_dir: str = settings.DATA_DIR, index_dir: str = settings.IND
     chunks = chunk_pages(pages)
     print(f"   {len(chunks)} chunks")
 
-    print(f"3. calcul des embeddings avec {settings.EMBEDDING_MODEL} (peut prendre 1 à 2 min)...")
+    print(
+        f"3. calcul des embeddings avec {settings.EMBEDDING_MODEL} (peut prendre 1 à 2 min)..."
+    )
     embeddings = embed([chunk["text"] for chunk in chunks])
     print(f"   matrice {embeddings.shape} (chunks x dimensions)")
 
@@ -164,7 +170,9 @@ def load_index(index_dir: str = settings.INDEX_DIR) -> tuple[list[dict], np.ndar
 
 
 # --- 5. Retrieval : retrouver les chunks pertinents ---------------------------
-def search(query: str, chunks: list[dict], embeddings: np.ndarray, k: int = settings.TOP_K) -> list[dict]:
+def search(
+    query: str, chunks: list[dict], embeddings: np.ndarray, k: int = settings.TOP_K
+) -> list[dict]:
     """Recherche sémantique : les k chunks dont le vecteur est le plus proche de la question.
 
     1. on vectorise la question avec le MÊME modèle que les chunks
@@ -197,7 +205,6 @@ def search_bm25(query: str, chunks: list[dict], k: int = settings.TOP_K) -> list
 # --- 6. Generation : répondre à partir des chunks ----------------------------
 SYSTEM_PROMPT = """Tu es un assistant technique qui répond à des questions sur des datasheets de composants électroniques.
 Réponds UNIQUEMENT à partir des extraits fournis. Si l'information n'y figure pas, dis-le clairement.
-Cite tes sources à la fin de chaque affirmation sous la forme [fichier, page N].
 Réponds dans la langue de la question."""
 
 
@@ -208,7 +215,8 @@ def build_prompt(query: str, chunks: list[dict]) -> list[dict]:
     elle est injectée dans le prompt.
     """
     extraits = "\n\n".join(
-        f"[{chunk['source']}, page {chunk['page']}]\n{chunk['text']}" for chunk in chunks
+        f"[{chunk['source']}, page {chunk['page']}]\n{chunk['text']}"
+        for chunk in chunks
     )
     user_message = f"Extraits de documentation :\n\n{extraits}\n\nQuestion : {query}"
     return [
@@ -217,17 +225,25 @@ def build_prompt(query: str, chunks: list[dict]) -> list[dict]:
     ]
 
 
-def generate(messages: list[dict], model: str = settings.GENERATION_MODEL, temperature: float = 0.0) -> str:
+def generate(
+    messages: list[dict],
+    model: str = settings.GENERATION_MODEL,
+    temperature: float = 0.0,
+) -> str:
     """Appelle le LLM via LiteLLM et renvoie le texte de la réponse.
 
     temperature=0 : réponses les plus déterministes possible (ce qu'on veut pour du factuel).
     """
-    response = completion(model=model, messages=messages, temperature=temperature, max_tokens=600)
+    response = completion(
+        model=model, messages=messages, temperature=temperature, max_tokens=600
+    )
     return response.choices[0].message.content
 
 
 # --- 7. Le RAG = retrieval + generation --------------------------------------
-def answer(query: str, chunks: list[dict], embeddings: np.ndarray, k: int = settings.TOP_K) -> tuple[str, list[dict]]:
+def answer(
+    query: str, chunks: list[dict], embeddings: np.ndarray, k: int = settings.TOP_K
+) -> tuple[str, list[dict]]:
     """Répond à une question : recherche des k chunks pertinents puis génération.
 
     Renvoie la réponse ET les chunks utilisés (pour pouvoir vérifier les sources).
@@ -250,4 +266,6 @@ if __name__ == "__main__":
         print(response)
         print("\n--- chunks utilisés ---")
         for chunk in used_chunks:
-            print(f"[{chunk['source']}, page {chunk['page']}] score={chunk['score']:.3f}")
+            print(
+                f"[{chunk['source']}, page {chunk['page']}] score={chunk['score']:.3f}"
+            )

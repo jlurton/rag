@@ -69,3 +69,14 @@ cp .env.example .env             # puis renseigner LLM_API_KEY dans .env
 python check_setup.py            # vérifie Python, clé, corpus, embeddings, appel LLM
 jupyter lab                      # ouvre les notebooks
 ```
+
+## Corrigés
+
+Le dossier `solutions/` est vide au départ : les corrigés sont fournis **à la fin de chaque TP**,
+un fichier par TP (`tp1.py`, `tp2.py`, `tp3.py`). Déposez-les dans ce dossier, sans les renommer.
+
+Pourquoi ? Le TP2 et le TP3 réutilisent des fonctions du TP1 (recherche hybride, découpage par paragraphes).
+Ils les importent depuis `solutions/tp1.py` : si vous n'avez pas terminé le TP1, vous pouvez continuer quand même.
+
+Vous préférez vos propres fonctions ? Collez-les sous l'import, dans la cellule concernée : elles remplacent celles
+du corrigé.

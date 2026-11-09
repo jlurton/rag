@@ -25,15 +25,11 @@ EMBEDDING_MODELS_TO_COMPARE = [
 ]
 
 # --- Modèle de génération (TP2) -------------------------------------------
-# Appelé via le proxy LLM de Cross Data (API compatible OpenAI), avec LiteLLM :
+# Appelé via l'API de Cross Data (compatible OpenAI), avec LiteLLM :
 # le préfixe "openai/" indique à LiteLLM de parler le format OpenAI à l'adresse LLM_API_BASE.
 # La clé d'API est lue dans la variable d'environnement LLM_API_KEY (fichier .env).
 LLM_API_BASE = "https://proxy.openllm.lab.crossdata.tech"
 GENERATION_MODEL = "openai/mistral/mistral-small-latest"
-# Modèle utilisé pour les comparaisons (TP2 §4.b) et comme juge (TP3).
-# Le proxy n'expose qu'un seul modèle de génération pour l'instant : c'est donc le même.
-# À remplacer par un modèle plus gros dès qu'il y en a un.
-GENERATION_MODEL_LARGE = "openai/mistral/mistral-small-latest"
 
 # --- Recherche -------------------------------------------------------------
-TOP_K = 5  # nombre de chunks transmis au LLM
+TOP_K = 15  # nombre de chunks transmis au LLM
