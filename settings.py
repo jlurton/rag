@@ -33,3 +33,8 @@ GENERATION_MODEL = "openai/mistral/mistral-small-latest"
 
 # --- Recherche -------------------------------------------------------------
 TOP_K = 15  # nombre de chunks transmis au LLM
+
+# --- Reranking (TP4) -------------------------------------------------------
+# Cross-encoder ouvert Hugging Face, exécuté en local sur le CPU (via fastembed), ~80 Mo.
+# Entraîné sur des requêtes en anglais (MS MARCO).
+RERANK_MODEL = "Xenova/ms-marco-MiniLM-L-6-v2"

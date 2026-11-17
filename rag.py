@@ -19,6 +19,7 @@ Usage en ligne de commande :
     python rag.py "Quelle est la tension d'alimentation du HC-SR04 ?"
 
 Les notebooks tp1/tp2/tp3 reprennent ces étapes une par une, avec des explications.
+Le notebook tp4 (pour aller plus loin) ajoute le reranking, HyDE et l'enrichissement des chunks.
 """
 
 import json

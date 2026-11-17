@@ -73,10 +73,17 @@ jupyter lab                      # ouvre les notebooks
 ## Corrigés
 
 Le dossier `solutions/` est vide au départ : les corrigés sont fournis **à la fin de chaque TP**,
-un fichier par TP (`tp1.py`, `tp2.py`, `tp3.py`). Déposez-les dans ce dossier, sans les renommer.
+un fichier par TP (`tp1.py`, `tp2.py`, `tp3.py`, `tp4.py`). Déposez-les dans ce dossier, sans les renommer.
 
 Pourquoi ? Le TP2 et le TP3 réutilisent des fonctions du TP1 (recherche hybride, découpage par paragraphes).
 Ils les importent depuis `solutions/tp1.py` : si vous n'avez pas terminé le TP1, vous pouvez continuer quand même.
+
+## Pour aller plus loin : le TP4
+
+`tp4_aller_plus_loin.ipynb` s'adresse à ceux qui ont terminé les trois TP. Il teste trois techniques pour mieux
+chercher (reranking, HyDE, enrichissement des chunks) et les mesure avec l'évaluation du TP3.
+Il importe les corrigés des TP1, TP2 et TP3 : `solutions/tp1.py`, `solutions/tp2.py` et `solutions/tp3.py`
+doivent être présents.
 
 Vous préférez vos propres fonctions ? Collez-les sous l'import, dans la cellule concernée : elles remplacent celles
 du corrigé.
